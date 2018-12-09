@@ -17,7 +17,7 @@ public class Main {
         try {
             result = conwayFunction.generate(0, 40);
             for (int i = 0; i < result.size(); i++) {
-                logger.info("Line Number " + (i+1) + " : " + result.get(i));
+                logger.info(String.format("Line Number %d  : %s",(i+1)  , result.get(i)));
             }
         } catch (ConwayException e) {
             logger.info("An error has append : "+e.getMessage());
