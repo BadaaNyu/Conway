@@ -20,7 +20,7 @@ public class ConwayFunctionImpl implements ConwayFunction {
             if (i >= minNumberLine && i <= maxNumberLine) {
                 result.add(currentConwayLine);
             }
-            currentConwayLine = getConwayStringFrom(currentConwayLine);
+            currentConwayLine = getConwayNextLine(currentConwayLine);
         }
         return result;
     }
@@ -35,7 +35,7 @@ public class ConwayFunctionImpl implements ConwayFunction {
         }
     }
 
-    private String getConwayStringFrom(String previousConwayLine) throws ConwayException {
+    private String getConwayNextLine(String previousConwayLine) throws ConwayException {
         StringBuffer sb = new StringBuffer();
         char lastNumberRead;
         int indexInString = 0;
@@ -54,12 +54,8 @@ public class ConwayFunctionImpl implements ConwayFunction {
                     actualNumberRead = previousConwayLine.charAt(indexInString);
                 }
             }
-            try {
-                sb.append(countSameNumberRead);
-                sb.append(lastNumberRead);
-            } catch (Exception e) {
-                throw new ConwayException("The maximum line you mentioned is too big");
-            }
+            sb.append(countSameNumberRead);
+            sb.append(lastNumberRead);
         }
         return sb.toString();
     }
